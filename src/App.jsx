@@ -8,13 +8,11 @@ function App() {
 
   const addTodo = () => {
     if (editIndex !== null) {
-      // If editing an existing todo
       const updatedTodos = [...todos];
       updatedTodos[editIndex] = value;
       setTodos(updatedTodos);
       setEditIndex(null);
     } else {
-      // If adding a new todo
       setTodos([...todos, value]);
     }
 
