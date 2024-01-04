@@ -19,11 +19,11 @@
   transition: all .5s;
 }
 
-.delAllBtn {
+.delAllBtn, .deleteBtn {
   background-color: #d21e33;
 }
 
-.delAllBtn:hover {
+.delAllBtn:hover, .deleteBtn:hover {
   background-color: rgb(161, 15, 32);
 }
 
@@ -72,11 +72,29 @@
   background-color: rgb(7, 100, 7);
 }
 
-.deleteBtn {
-  background-color: #d21e33;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-thumb {
+  background: rgb(146, 146, 146); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(92, 92, 92); 
+}
+
+@media (max-width: 344px) {
+  .btnsDiv {
+    flex-direction: column;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

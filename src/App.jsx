@@ -68,35 +68,39 @@ function App() {
         </button>
         <button onClick={() => setTodos([])} style={{ display: todos.length > 0 ? "block" : "none" }} className='delAllBtn'>Delete All</button>
       </div>
-      <table className='table' style={{ display: todos.length > 0 ? "table" : "none" }}>
-        <tbody>
-          <tr>
-            <th>S No.</th>
-            <th>Todo Item</th>
-            <th>Actions</th>
-          </tr>
-          {
-            todos.map((todo, index) => {
-              return (
-                <tr key={index}>
-                  <th>{index + 1}</th>
-                  <td>{todo}</td>
-                  <td><div className="editDelBtns">
-                    <button className="editBtn"
-                      onClick={() => editTodo(index)}
-                    >
-                      Edit
-                    </button>
-                    <button className="deleteBtn" onClick={() => deleteTodo(index)}>
-                      Delete
-                    </button>
-                  </div></td>
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
+      <div className="table-responsive">
+
+        <table className='table table-bordered' style={{ display: todos.length > 0 ? "table" : "none" }}>
+          <tbody>
+            <tr>
+              <th>S No.</th>
+              <th>Todo Item</th>
+              <th>Actions</th>
+            </tr>
+            {
+              todos.map((todo, index) => {
+                return (
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>{todo}</td>
+                    <td><div className="editDelBtns">
+                      <button className="editBtn"
+                        onClick={() => editTodo(index)}
+                      >
+                        Edit
+                      </button>
+                      <button className="deleteBtn" onClick={() => deleteTodo(index)}>
+                        Delete
+                      </button>
+                    </div></td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+
     </div>
   );
 }
