@@ -75,11 +75,20 @@ function App() {
         </button>
         <button onClick={() => setTodos([])} style={{ display: todos.length > 0 ? "block" : "none" }}>Delete All</button>
       </div>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <div className="editDelBtns">
+      <table className='table table-hover' style={{ display: todos.length > 0 ? "block" : "none" }}>
+        <tbody>
+          <tr>
+            <th>S No.</th>
+            <th>Todo Item</th>
+            <th>Actions</th>
+          </tr>
+          {
+            todos.map((todo, index) => {
+              return (
+                <tr key={index}>
+                  <th>{index + 1}</th>
+                  <td>{todo}</td>
+                  <td><div className="editDelBtns">
               <button className="editBtn"
                 onClick={() => editTodo(index)}
               >
@@ -88,10 +97,13 @@ function App() {
               <button className="deleteBtn" onClick={() => deleteTodo(index)}>
                 Delete
               </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </div></td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
     </div>
   );
 }
