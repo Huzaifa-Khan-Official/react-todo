@@ -1,6 +1,38 @@
 .App {
   text-align: center;
+  margin: 50px 20px;
+  padding: 50px 30px;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.inputDiv>input {
   margin: 20px 0;
+}
+
+.btnsDiv button {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: all .5s;
+}
+
+.delAllBtn {
+  background-color: #d21e33;
+}
+
+.delAllBtn:hover {
+  background-color: rgb(161, 15, 32);
+}
+
+.addBtn {
+  background-color: #2ec2eb;
+}
+
+.addBtn:hover {
+  background-color: #1888a7;
 }
 
 .App-logo {
@@ -15,6 +47,36 @@
   align-items: center;
   gap: 10px;
 }
+
+.editDelBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.editDelBtns button {
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: all .5s;
+}
+
+.editBtn {
+  background-color: rgb(3, 146, 3);
+}
+
+.editBtn:hover {
+  background-color: rgb(7, 100, 7);
+}
+
+.deleteBtn {
+  background-color: #d21e33;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -41,6 +103,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

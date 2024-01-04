@@ -27,14 +27,6 @@ function App() {
         title: "Oops...",
         text: "Something went wrong!",
       });
-
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "Oops",
-
-      // })
-
-      // alert("please write something")
     }
 
 
@@ -60,9 +52,10 @@ function App() {
 
   return (
     <div className="App">
-      <h2>React Todo</h2>
+      <h2>To do App</h2>
       <div className="inputDiv">
         <input
+          className="form-control"
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -70,12 +63,12 @@ function App() {
         />
       </div>
       <div className="btnsDiv">
-        <button onClick={addTodo}>
+        <button onClick={addTodo} className='addBtn'>
           {editIndex !== null ? "Edit Todo" : "Add Todo"}
         </button>
-        <button onClick={() => setTodos([])} style={{ display: todos.length > 0 ? "block" : "none" }}>Delete All</button>
+        <button onClick={() => setTodos([])} style={{ display: todos.length > 0 ? "block" : "none" }} className='delAllBtn'>Delete All</button>
       </div>
-      <table className='table table-hover' style={{ display: todos.length > 0 ? "block" : "none" }}>
+      <table className='table' style={{ display: todos.length > 0 ? "table" : "none" }}>
         <tbody>
           <tr>
             <th>S No.</th>
@@ -89,15 +82,15 @@ function App() {
                   <th>{index + 1}</th>
                   <td>{todo}</td>
                   <td><div className="editDelBtns">
-              <button className="editBtn"
-                onClick={() => editTodo(index)}
-              >
-                Edit
-              </button>
-              <button className="deleteBtn" onClick={() => deleteTodo(index)}>
-                Delete
-              </button>
-            </div></td>
+                    <button className="editBtn"
+                      onClick={() => editTodo(index)}
+                    >
+                      Edit
+                    </button>
+                    <button className="deleteBtn" onClick={() => deleteTodo(index)}>
+                      Delete
+                    </button>
+                  </div></td>
                 </tr>
               )
             })
