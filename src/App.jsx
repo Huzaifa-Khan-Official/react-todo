@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Swal from 'sweetalert2'
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -7,16 +8,36 @@ function App() {
   const [editIndex, setEditIndex] = useState(null);
 
   const addTodo = () => {
-    if (editIndex !== null) {
-      const updatedTodos = [...todos];
-      updatedTodos[editIndex] = value;
-      setTodos(updatedTodos);
-      setEditIndex(null);
+    if (value !== "") {
+
+      if (editIndex !== null) {
+        const updateTodos = [...todos];
+        updateTodos[editIndex] = value;
+        setTodos(updateTodos);
+        setEditIndex(null);
+      } else {
+        setTodos([...todos, value]);
+      }
+
+      setValue("");
+
     } else {
-      setTodos([...todos, value]);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Oops",
+
+      // })
+
+      // alert("please write something")
     }
 
-    setValue("");
+
   };
 
   const handleKeyPress = (e) => {
@@ -35,7 +56,7 @@ function App() {
   const editTodo = (index) => {
     setEditIndex(index);
     setValue(todos[index]);
-  };
+  }
 
   return (
     <div className="App">
@@ -45,19 +66,23 @@ function App() {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyPress}
+          onKeyUp={handleKeyPress}
         />
       </div>
       <div className="btnsDiv">
-        <button onClick={addTodo}>{editIndex !== null ? 'Edit Todo' : 'Add Item'}</button>
-        <button onClick={() => setTodos([])}>Delete All</button>
+        <button onClick={addTodo}>
+          {editIndex !== null ? "Edit Todo" : "Add Todo"}
+        </button>
+        <button onClick={() => setTodos([])} style={{ display: todos.length > 0 ? "block" : "none" }}>Delete All</button>
       </div>
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
             {todo}
             <div className="editDelBtns">
-              <button className="editBtn" onClick={() => editTodo(index)}>
+              <button className="editBtn"
+                onClick={() => editTodo(index)}
+              >
                 Edit
               </button>
               <button className="deleteBtn" onClick={() => deleteTodo(index)}>
