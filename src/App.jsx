@@ -82,7 +82,7 @@ function App() {
                 return (
                   <tr key={index}>
                     <th>{index + 1}</th>
-                    <td>{todo}</td>
+                    <td className='todoTd'>{todo}</td>
                     <td><div className="editDelBtns">
                       <button className="editBtn"
                         onClick={() => editTodo(index)}
